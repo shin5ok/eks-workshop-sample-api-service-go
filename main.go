@@ -13,8 +13,9 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
 		f := fib()
+    word := "Hello World, Takosuke"
 
-		res := &response{Message: "Hello World"}
+		res := &response{Message: word}
 
 		for _, e := range os.Environ() {
 			pair := strings.Split(e, "=")
@@ -33,7 +34,7 @@ func main() {
 
 		io.WriteString(w, string(out))
 
-		fmt.Println("Hello world, Takosuke - the log message")
+		fmt.Println(word + " for log")
 	})
 	http.ListenAndServe(":8080", nil)
 }
